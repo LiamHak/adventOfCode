@@ -1,5 +1,3 @@
-import gh
-
 def load_data():
     input_object = open("input.txt", "r")
     input_data = input_object.read()
