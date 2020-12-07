@@ -17,26 +17,6 @@ def compile_rules(rules_list):
     return rules
 
 
-def contains_gold_bag(outer_bag):
-    inner_bags = rules[outer_bag]
-    contains_gold = False
-
-    for bag in inner_bags:
-        if bag != "no other bags.":
-            desc = bag.split(" ")
-            if desc[1] == "shiny" and desc[2] == "gold":
-                contains_gold = True
-                break
-            else:
-                sep = " "
-                bag_type_desc = [desc[1], desc[2], "bags"]
-                bag_type = sep.join(bag_type_desc)
-                contains_gold = contains_gold_bag(bag_type)
-                if contains_gold:
-                    break
-    return contains_gold
-
-
 def contains_bags(outer_bag):
     inner_bags = rules[outer_bag]
     contained_bags = 0
