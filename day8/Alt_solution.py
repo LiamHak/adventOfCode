@@ -30,7 +30,7 @@ def task_one():
             loop = True
     acc = computer.get_accumulator()
 
-    print("Acclamator value before loop:", acc)
+    print("Accumulator value before loop:", acc)
 
 
 def task_two():
