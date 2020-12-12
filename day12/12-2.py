@@ -1,6 +1,3 @@
-from operator import add
-
-
 def load_data():
     input_object = open("input.txt", "r")
     input_data = input_object.readlines()
