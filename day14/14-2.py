@@ -12,8 +12,15 @@ def load_data():
 
 def apply_mask(num, mask):
     bit_num = bin(num)[2:].zfill(36)
-    new_bit_num = [bit if mask[i] == "X" else mask[i] for i, bit in enumerate(bit_num)]
-    bit_num = "".join(new_bit_num)
+    new_bit_nums = [bit for bit in bit_num if ]
+    new_bit_num = ""
+
+    for i, bit in enumerate(bit_num):
+        if mask[i] == "X":
+            new_bit_num += bit
+        else:
+            new_bit_num += mask[i]
+    bit_num = new_bit_num
     return bit_num
 
 
