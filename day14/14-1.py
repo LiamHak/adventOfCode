@@ -27,8 +27,8 @@ if __name__ == '__main__':
             mask = inst[1]
         else:
             bit_num = apply_mask(int(inst[1]), mask)
-            mem_adress = int(inst[0].strip("mem[").strip("]"))
-            mem[mem_adress] = int(bit_num, 2)
+            mem_address = int(inst[0].strip("mem[").strip("]"))
+            mem[mem_address] = int(bit_num, 2)
 
     total_memory_values = sum(mem.values())
 
