@@ -16,25 +16,32 @@ def load_data():
     return eq_queues
 
 
+def handle_parenthesis(eq):
+    open_brackets = 1
+    sub_eq = Queue()
+    while open_brackets > 0:
+        char = eq.get()
+        if char == "(":
+            open_brackets += 1
+        elif char == ")":
+            open_brackets -= 1
+        sub_eq.put(char)
+
+    result = solve_eq(sub_eq)
+    return result
+
+
 def solve_eq(eq):
     eq_result = 0
     next_op = "+"
     while not eq.empty():
         char = eq.get()
         if char == "(":
-            open_brackets = 1
-            sub_eq = Queue()
-            while open_brackets > 0:
-                char = eq.get()
-                if char == "(":
-                    open_brackets += 1
-                elif char == ")":
-                    open_brackets -= 1
-                sub_eq.put(char)
+            par_result = handle_parenthesis(eq)
             if next_op == "+":
-                eq_result += solve_eq(sub_eq)
+                eq_result += par_result
             elif next_op == "*":
-                eq_result = eq_result * solve_eq(sub_eq)
+                eq_result = eq_result * par_result
         elif char == ")":
             continue
         elif char == "+" or char == "*":
