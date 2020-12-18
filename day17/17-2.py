@@ -1,3 +1,6 @@
+from itertools import combinations
+
+
 def load_data():
     input_object = open("input.txt", "r")
     input_data = input_object.readlines()
@@ -9,10 +12,15 @@ def load_data():
 
 def step(grid):
     new_grid = {}
-    for x in range(min(key[0] for key in grid.keys()) - 1, max(key[0] for key in grid.keys()) + 2):
-        for y in range(min(key[1] for key in grid.keys()) - 1, max(key[1] for key in grid.keys()) + 2):
-            for z in range(min(key[2] for key in grid.keys()) - 1, max(key[2] for key in grid.keys()) + 2):
-                for q in range(min(key[3] for key in grid.keys()) - 1, max(key[3] for key in grid.keys()) + 2):
+    x_span = range(min(key[0] for key in grid.keys()) - 1, max(key[0] for key in grid.keys()) + 2)
+    y_span = range(min(key[1] for key in grid.keys()) - 1, max(key[1] for key in grid.keys()) + 2)
+    z_span = range(min(key[2] for key in grid.keys()) - 1, max(key[2] for key in grid.keys()) + 2)
+    q_span = range(min(key[3] for key in grid.keys()) - 1, max(key[3] for key in grid.keys()) + 2)
+
+    for x in x_span:
+        for y in y_span:
+            for z in z_span:
+                for q in q_span:
                     active = grid.get((x, y, z, q), False)
                     active_neighbors = 0
                     for dx in (-1, 0, 1):
