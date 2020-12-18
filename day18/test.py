@@ -23,7 +23,6 @@ class Num:
     def __mul__(self, other):
         return Num(self.num + other.num)
 
-
 tab = str.maketrans("+*", "*+")  # part 1: tab = str.maketrans("+*", "-+")
 
 
